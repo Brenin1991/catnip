@@ -1,0 +1,108 @@
+.title-bar {
+    -webkit-app-region: drag;
+    height: 32px;
+    background: var(--bg-glass);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 16px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border-light);
+    z-index: 101;
+    position: relative;
+}
+
+.title-bar-drag-region {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    -webkit-app-region: drag;
+    height: 100%;
+}
+
+.title-bar-title {
+    -webkit-app-region: no-drag;
+    font-weight: 500;
+    margin-left: 12px;
+    letter-spacing: -0.01em;
+    color: var(--text-secondary);
+}
+
+.title-bar-controls {
+    display: flex;
+    -webkit-app-region: no-drag;
+    gap: 0;
+}
+
+.title-bar-button {
+    height: 32px;
+    width: 48px;
+    background-color: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+}
+
+.title-bar-button svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.title-bar-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.title-bar-button:active {
+    transform: scale(0.95);
+}
+
+.title-bar-button.minimize:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.title-bar-button.maximize:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.title-bar-button.close:hover {
+    background-color: rgba(255, 59, 48, 0.9);
+    color: white;
+}
+
+.title-bar-button.close:hover svg {
+    transform: scale(1.1);
+}
+
+/* Efeito de brilho sutil nos botões */
+.title-bar-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.title-bar-button:hover::before {
+    width: 32px;
+    height: 32px;
+}
+
+.title-bar-button.close:hover::before {
+    background: rgba(255, 255, 255, 0.3);
+}

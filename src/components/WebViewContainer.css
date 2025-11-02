@@ -1,0 +1,22 @@
+.webview-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.webview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    border: none;
+}
+
+.webview.hidden {
+    display: none !important;
+}
+
