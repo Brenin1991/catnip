@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './TitleBar.css';
+import './Tabs.css';
 
-function TitleBar() {
+function TitleBar({ tabs, activeTabId, onTabClick, onTabClose, onNewTab }) {
   const [isMaximized, setIsMaximized] = useState(false);
   const [showTitleBar, setShowTitleBar] = useState(false);
 
@@ -68,7 +69,38 @@ function TitleBar() {
   return (
     <div className="title-bar">
       <div className="title-bar-drag-region">
-        <div className="title-bar-title">Privacy Browser</div>
+        <div className="title-bar-tabs">
+          {tabs && tabs.map(tab => (
+            <div
+              key={tab.id}
+              className={`tab ${activeTabId === tab.id ? 'active' : ''}`}
+              onClick={() => onTabClick && onTabClick(tab.id)}
+            >
+              <span className="tab-title" title={tab.url || 'Nova Aba'}>
+                {tab.title || 'Nova Aba'}
+              </span>
+              <button
+                className="tab-close"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onTabClose && onTabClose(tab.id);
+                }}
+                title="Fechar aba"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          ))}
+          <button className="tab-new" onClick={onNewTab} title="Nova aba">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
       </div>
       <div className="title-bar-controls">
         <button className="title-bar-button minimize" onClick={handleMinimize} title="Minimizar">

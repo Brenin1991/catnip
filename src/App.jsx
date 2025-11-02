@@ -217,7 +217,13 @@ function App() {
 
   return (
     <div className={`browser-container ${isFullscreen ? 'fullscreen' : ''}`}>
-      {!isFullscreen && <TitleBar />}
+      {!isFullscreen && <TitleBar
+        tabs={tabs}
+        activeTabId={activeTabId}
+        onTabClick={switchTab}
+        onTabClose={closeTab}
+        onNewTab={handleNewTab}
+      />}
       
       {!isFullscreen && <Toolbar
         onNavigate={handleNavigate}
@@ -235,14 +241,6 @@ function App() {
         canGoBack={activeTab?.canGoBack || false}
         canGoForward={activeTab?.canGoForward || false}
         activeDownloadsCount={activeDownloadsCount}
-      />}
-      
-      {!isFullscreen && <Tabs
-        tabs={tabs}
-        activeTabId={activeTabId}
-        onTabClick={switchTab}
-        onTabClose={closeTab}
-        onNewTab={handleNewTab}
       />}
 
       <div className="content-wrapper">
