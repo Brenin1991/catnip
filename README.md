@@ -47,18 +47,20 @@ Um navegador web totalmente focado em privacidade e segurança, construído com 
       <br />
       <em>Screenshot 2</em>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <img src="docs/03.png" alt="Screenshot 3" width="100%" />
       <br />
       <em>Screenshot 3</em>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <img src="docs/04.png" alt="Screenshot 4" width="100%" />
       <br />
       <em>Screenshot 4</em>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <img src="docs/05.png" alt="Screenshot 5" width="100%" />
       <br />
