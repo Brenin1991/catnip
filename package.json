@@ -137,7 +137,13 @@
       "icon": "assets/icon.png",
       "category": "Network",
       "maintainer": "Catnip <catnip@example.com>",
-      "artifactName": "${productName}-${version}-${arch}.${ext}"
+      "artifactName": "${productName}-${version}-${arch}.${ext}",
+      "desktop": {
+        "Name": "Catnip Secure Browser",
+        "Comment": "Navegador web focado em privacidade e segurança",
+        "Categories": "Network;WebBrowser;",
+        "MimeType": "text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/svg+xml;x-scheme-handler/http;x-scheme-handler/https;"
+      }
     }
   }
 }

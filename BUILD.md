@@ -126,6 +126,24 @@ Após a build, os arquivos estarão na pasta `dist/`:
    ```
    Deve conter: `main.js`, `preload.js`, `utils/`, `database/`, `dist-electron/`
 
+6. **Se o ícone não aparecer:**
+   ```bash
+   # Verificar se o ícone foi instalado
+   ls -la /usr/share/icons/hicolor/*/apps/catnip-secure-browser.png
+   
+   # Se não existir, o electron-builder pode não ter criado automaticamente
+   # Você pode criar manualmente ou verificar se o assets/icon.png tem pelo menos 512x512 pixels
+   ```
+   
+   **Solução temporária:** Crie ícones manualmente:
+   ```bash
+   # Instalar ícones em múltiplos tamanhos (se necessário)
+   sudo mkdir -p /usr/share/icons/hicolor/{16x16,32x32,48x48,256x256}/apps
+   # Copiar o ícone (ajuste o caminho se necessário)
+   sudo cp /opt/Catnip\ Secure\ Browser/resources/app.asar.unpacked/assets/icon.png /usr/share/icons/hicolor/256x256/apps/catnip-secure-browser.png
+   sudo gtk-update-icon-cache /usr/share/icons/hicolor/
+   ```
+
 ## Notas Importantes
 
 1. **Primeira vez pode demorar**: A primeira build baixa o Electron e ferramentas necessárias
