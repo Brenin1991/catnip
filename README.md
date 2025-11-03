@@ -1,5 +1,9 @@
 # Catnip Secure Browser
 
+<div align="center">
+  <img src="docs/logo.png" alt="Catnip Logo" width="300" />
+</div>
+
 Um navegador web totalmente focado em privacidade e segurança, construído com Electron.
 
 <div align="center">
