@@ -69,6 +69,7 @@ function TitleBar({ tabs, activeTabId, onTabClick, onTabClose, onNewTab }) {
   return (
     <div className="title-bar">
       <div className="title-bar-drag-region">
+        <div className="title-bar-drag-area"></div>
         <div className="title-bar-tabs">
           {tabs && tabs.map(tab => (
             <div
@@ -121,6 +122,7 @@ function TitleBar({ tabs, activeTabId, onTabClick, onTabClose, onNewTab }) {
             </svg>
           </button>
         </div>
+        <div className="title-bar-drag-area-right"></div>
       </div>
       <div className="title-bar-controls">
         <button className="title-bar-button minimize" onClick={handleMinimize} title="Minimizar">
