@@ -1,32 +1,37 @@
-# 🐱 Catnip Secure Browser
+# Catnip Secure Browser
 
-Um navegador web totalmente focado em **privacidade e segurança**, construído com Electron.
+Um navegador web totalmente focado em privacidade e segurança, construído com Electron.
 
-## 🚀 Recursos
+<div align="center">
+  <img src="assets/nico.JPEG" alt="Nico protegendo sua privacidade" width="600" />
+  <p><em>Nico aqui, garantindo que ninguém rastreie você pela internet. Sério, ele não deixa passar nada.</em></p>
+</div>
+
+## Recursos
 
 ### Recursos de Privacidade
 
-- ✅ **Bloqueio de Rastreadores** - Bloqueia automaticamente scripts e requisições de rastreamento
-- ✅ **Bloqueio de Anúncios** - Remove anúncios e scripts publicitários
-- ✅ **Proteção contra Fingerprinting** - Modifica APIs do navegador para prevenir identificação única
-- ✅ **Bloqueio de Cookies de Terceiros** - Impede que sites de terceiros armazenem cookies
-- ✅ **Bloqueio de Scripts de Terceiros** - Opção para bloquear todos os scripts externos
-- ✅ **HTTPS Only Mode** - Redireciona automaticamente conexões HTTP para HTTPS
-- ✅ **Do Not Track** - Envia cabeçalho DNT para todos os sites
-- ✅ **Limpeza Automática** - Remove cookies e cache ao fechar o navegador
-- ✅ **Proteção WebGL/Canvas/WebAudio** - Proteção adicional contra fingerprinting
-- ✅ **Bloqueio de Notificações** - Bloqueia todas as solicitações de notificações
-- ✅ **Bloqueio de Geolocalização** - Bloqueia todas as solicitações de geolocalização
+- **Bloqueio de Rastreadores** - Bloqueia automaticamente scripts e requisições de rastreamento
+- **Bloqueio de Anúncios** - Remove anúncios e scripts publicitários
+- **Proteção contra Fingerprinting** - Modifica APIs do navegador para prevenir identificação única
+- **Bloqueio de Cookies de Terceiros** - Impede que sites de terceiros armazenem cookies
+- **Bloqueio de Scripts de Terceiros** - Opção para bloquear todos os scripts externos
+- **HTTPS Only Mode** - Redireciona automaticamente conexões HTTP para HTTPS
+- **Do Not Track** - Envia cabeçalho DNT para todos os sites
+- **Limpeza Automática** - Remove cookies e cache ao fechar o navegador
+- **Proteção WebGL/Canvas/WebAudio** - Proteção adicional contra fingerprinting
+- **Bloqueio de Notificações** - Bloqueia todas as solicitações de notificações
+- **Bloqueio de Geolocalização** - Bloqueia todas as solicitações de geolocalização
 
 ### Interface
 
-- 🎨 Interface moderna e escura
-- 📑 Sistema de abas múltiplas
-- 🔍 Barra de endereço inteligente com busca integrada
-- 📊 Estatísticas de privacidade em tempo real
-- ⚙️ Painel de configurações de privacidade completo
+- Interface moderna e escura
+- Sistema de abas múltiplas
+- Barra de endereço inteligente com busca integrada
+- Estatísticas de privacidade em tempo real
+- Painel de configurações de privacidade completo
 
-## 📦 Instalação
+## Instalação
 
 ### Pré-requisitos
 
@@ -50,7 +55,7 @@ npm run electron:dev
 
 Este comando inicia o servidor Vite (React) e o Electron simultaneamente.
 
-## 🏗️ Build
+## Build
 
 Para criar um executável, primeiro faça o build do React e depois do Electron:
 
@@ -71,7 +76,7 @@ npm run electron:build:linux
 
 Os executáveis estarão na pasta `dist/`.
 
-## 🎯 Como Usar
+## Como Usar
 
 ### Navegação Básica
 
@@ -94,7 +99,7 @@ Os executáveis estarão na pasta `dist/`.
 
 **Nota:** Algumas configurações requerem recarregamento do navegador para serem aplicadas.
 
-## ⚙️ Configurações Disponíveis
+## Configurações Disponíveis
 
 | Configuração | Descrição |
 |-------------|-----------|
@@ -112,7 +117,7 @@ Os executáveis estarão na pasta `dist/`.
 | **Bloquear Notificações** | Bloqueia todas as solicitações de notificações |
 | **Bloquear Geolocalização** | Bloqueia todas as solicitações de geolocalização |
 
-## 🔒 Segurança
+## Segurança
 
 Este navegador implementa várias camadas de segurança:
 
@@ -122,13 +127,13 @@ Este navegador implementa várias camadas de segurança:
 - **Web Security** - Habilita todas as proteções de segurança do Chromium
 - **Content Security Policy** - Política de segurança de conteúdo
 
-## 📝 Notas Importantes
+## Notas Importantes
 
 - Algumas configurações agressivas (como bloquear scripts de terceiros) podem quebrar alguns sites
 - O bloqueio de Canvas pode afetar sites que usam gráficos
 - As estatísticas de privacidade são contadores locais e são resetadas ao recarregar
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 - **Electron** - Framework para aplicações desktop
 - **React** - Biblioteca JavaScript para interfaces de usuário
@@ -136,19 +141,18 @@ Este navegador implementa várias camadas de segurança:
 - **Node.js** - Runtime JavaScript
 - **Chromium** - Engine de renderização (via Electron)
 
-## 📄 Licença
+## Licença
 
 MIT
 
-## 🤝 Contribuindo
+## Contribuindo
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
 
-## ⚠️ Aviso
+## Aviso
 
 Este navegador é um projeto de código aberto focado em privacidade. Use por sua conta e risco.
 
 ---
 
-**Desenvolvido com foco em privacidade e segurança** 🛡️
-
+**Desenvolvido com foco em privacidade e segurança**
