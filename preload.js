@@ -50,6 +50,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   onOpenPrivacySettings: (callback) => ipcRenderer.on('open-privacy-settings', callback),
   onShowMessage: (callback) => ipcRenderer.on('show-message', callback),
   onShowAbout: (callback) => ipcRenderer.on('show-about', callback),
+  onWebviewNewWindow: (callback) => ipcRenderer.on('webview-new-window', callback),
   
   // Remover listeners
   removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel),

@@ -143,7 +143,8 @@
         "Comment": "Navegador web focado em privacidade e segurança",
         "Categories": "Network;WebBrowser;",
         "MimeType": "text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/svg+xml;x-scheme-handler/http;x-scheme-handler/https;"
-      }
+      },
+      "synopsis": "Navegador web focado em privacidade e segurança"
     }
   }
 }

@@ -404,7 +404,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false, // CRÍTICO: Impede require(), fs, process, etc.
       contextIsolation: true,  // CRÍTICO: Isola código da página do Node.js
-      sandbox: false, // Sandbox desabilitado apenas na janela principal (para React)
+      sandbox: true, // Sandbox habilitado para proteção adicional contra vulnerabilidades do Chromium
       enableRemoteModule: false, // CRÍTICO: Impede módulo remote (deprecated)
       webSecurity: true, // CRÍTICO: Proteções padrão do Chromium
       allowRunningInsecureContent: true, // Permitir conteúdo misto para alguns sites funcionarem
@@ -446,6 +446,15 @@ function createWindow() {
   // O evento did-attach-webview é disparado quando um webview é anexado ao DOM
   mainWindow.webContents.on('did-attach-webview', (event, webContents) => {
     console.log('🔗 Webview anexado, configurando handlers de fullscreen...');
+    
+    // Interceptar novas janelas dos webviews e abrir em nova aba
+    webContents.setWindowOpenHandler((details) => {
+      console.log('🪟 Nova janela solicitada pelo webview:', details.url);
+      // Enviar URL para o renderer abrir em nova aba
+      mainWindow.webContents.send('webview-new-window', { url: details.url });
+      // Não criar nova janela
+      return { action: 'deny' };
+    });
     
     // Configurar handlers de fullscreen para este webview específico
     webContents.on('enter-html-full-screen', () => {

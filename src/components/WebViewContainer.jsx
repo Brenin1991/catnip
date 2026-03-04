@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './WebViewContainer.css';
 
-function WebViewContainer({ tabs, activeTabId, hasError, onTitleUpdate, onUrlUpdate, onLoadingChange, onFaviconUpdate, onError }) {
+function WebViewContainer({ tabs, activeTabId, hasError, onTitleUpdate, onUrlUpdate, onLoadingChange, onFaviconUpdate, onError, onNewTab }) {
   const containerRef = useRef(null);
   const webviewRefs = useRef({});
 
@@ -201,6 +201,10 @@ function WebViewContainer({ tabs, activeTabId, hasError, onTitleUpdate, onUrlUpd
 
         webview.addEventListener('new-window', (e) => {
           e.preventDefault();
+          // Quando clica com botão do meio ou Ctrl+clique, abrir em nova aba
+          if (e.url && onNewTab) {
+            onNewTab(e.url);
+          }
         });
 
         let errorState = { hasError: false, errorCode: null };

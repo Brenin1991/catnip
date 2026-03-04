@@ -49,6 +49,7 @@ function App() {
   const [showHomePage, setShowHomePage] = useState(true);
   const [activeDownloadsCount, setActiveDownloadsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const lastTabCreationTimeRef = useRef(0);
 
   // Calcular activeTab primeiro para poder usar nos useEffects
   const activeTab = tabs.find(t => t.id === activeTabId);
@@ -86,11 +87,47 @@ function App() {
         setShowAboutModal(true);
       });
 
+      // Listener para novas janelas dos webviews (botão do meio, Ctrl+clique, etc.)
+      const TAB_CREATION_COOLDOWN = 300; // 300ms entre criações de abas
+      const MAX_TABS = 50; // Limite máximo de abas
+      
+      window.electronAPI.onWebviewNewWindow((event, data) => {
+        if (data && data.url) {
+          // Proteção contra criação excessiva de abas (DoS)
+          const now = Date.now();
+          if (now - lastTabCreationTimeRef.current < TAB_CREATION_COOLDOWN) {
+            console.warn('⚠️ Tentativa de criar aba muito rápida, ignorando');
+            return;
+          }
+          
+          // Limite máximo de abas
+          if (tabs.length >= MAX_TABS) {
+            console.warn('⚠️ Limite máximo de abas atingido');
+            return;
+          }
+          
+          lastTabCreationTimeRef.current = now;
+          
+          // Normalizar URL antes de criar a aba
+          let finalUrl = data.url.trim();
+          if (!finalUrl.match(/^https?:\/\//i)) {
+            if (finalUrl.includes('.') && !finalUrl.includes(' ')) {
+              finalUrl = 'https://' + finalUrl;
+            } else {
+              // Buscar no DuckDuckGo
+              finalUrl = `https://duckduckgo.com/?q=${encodeURIComponent(finalUrl)}`;
+            }
+          }
+          createTab(finalUrl);
+        }
+      });
+
       return () => {
         window.electronAPI?.removeAllListeners('new-tab');
         window.electronAPI?.removeAllListeners('close-tab');
         window.electronAPI?.removeAllListeners('open-privacy-settings');
         window.electronAPI?.removeAllListeners('show-about');
+        window.electronAPI?.removeAllListeners('webview-new-window');
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -310,6 +347,19 @@ function App() {
             }
           }}
           onError={setTabError}
+          onNewTab={(url) => {
+            // Normalizar URL antes de criar a aba
+            let finalUrl = url.trim();
+            if (!finalUrl.match(/^https?:\/\//i)) {
+              if (finalUrl.includes('.') && !finalUrl.includes(' ')) {
+                finalUrl = 'https://' + finalUrl;
+              } else {
+                // Buscar no DuckDuckGo
+                finalUrl = `https://duckduckgo.com/?q=${encodeURIComponent(finalUrl)}`;
+              }
+            }
+            createTab(finalUrl);
+          }}
         />
 
         {showHomePage && !errors[activeTabId] && (!activeTab || activeTab?.url === 'about:blank') && (
